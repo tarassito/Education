@@ -1,0 +1,1 @@
+#This file discripes mutable and immutable data types. Clearify hashable, unhashable objects in Python.
