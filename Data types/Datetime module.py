@@ -21,7 +21,12 @@ time = datetime.time(12, 32)
 dt_today = datetime.datetime.today()
 # 2018-07-31 12:52:45.989619
 
-# dt_now = datetime.datetime.now(tz=) how to choose timezone?
+datetime.datetime(2018, 12, 31).isoformat()
+# '2018-12-31T00:00:00'
 
-ordinal = datetime.datetime.toordinal()
-print(ordinal)
+datetime.datetime(2018, 12, 31) - datetime.timedelta(days=2, hours=2)
+# datetime.datetime(2018, 12, 28, 22, 0)
+
+import pytz
+dt_now = datetime.datetime.now(tz=pytz.utc)
+# show time in UTC Zone
