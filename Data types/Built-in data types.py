@@ -26,6 +26,7 @@ UK imperial and US customary units system.""")
 
 print("My name is %s" % ("Taras")) # faster but old
 print("My name is {}".format("Taras"))
+print("My name is {name} and I love eat {dish}".format(dish="pasta", name="Taras"))
 
 uni = u"Unicode text"
 print(uni) # Why not unicode is returning?
@@ -143,12 +144,13 @@ print('Name' in a_dict.values())
 # False
 print(('Name','Taras' in a_dict.values()))
 # False
-a_dict.clear()
-# {}
-
 
 [i for i in a_dict]
 # ['Name', 'User'] iteration by key
 [i for i in a_dict.items()]
 # [('Name', 'Taras'), ('User', 'tarassito')] Iteration by key and value
+[(k, v) for k, v in a_dict.items()]
+# [('Name', 'Taras'), ('User', 'tarassito')]
 
+a_dict.clear()
+# {}
