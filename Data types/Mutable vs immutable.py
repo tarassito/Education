@@ -42,7 +42,7 @@ d = c
 print(id(c) == id(d))  # True - d is the same object as c
 print(id(c[0]) == id(d[0]))  # True - d[0] is the same object as c[0]
 
-# shallow copy
+# shallow copy or [:]
 d = copy.copy(c)
 print(id(c) == id(d))          # False - d is now a new object
 print(id(c[0]) == id(d[0]))    # True - d[0] is the same object as c[0]
