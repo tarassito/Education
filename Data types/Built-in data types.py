@@ -112,22 +112,43 @@ z_set.issuperset(x_set) # False; True if this set contains another set
 
 # Dictionary
 keys = {'a', 'b', 'c', 'd'}
-values = {'1'}
-dic = dict.fromkeys(keys, values) # {'d': {'1'}, 'a': {'1'}, 'c': {'1'}, 'b': {'1'}}
-dic.setdefault('z') # {'b': {'1'}, 'd': {'1'}, 'a': {'1'}, 'c': {'1'}, 'z': None}
+values = '1'
+dic = dict.fromkeys(keys, values)
+# {'d': '1', 'c': '1', 'b': '1', 'a': '1'}
+# dic['z'] # KeyError
+dic.get('z')
+# None
+dic.get('x', 10)
+# 10
+dic.setdefault('z')
+# {'d': '1', 'b': '1', 'a': '1', 'c': '1', 'z': None}
+dic.setdefault('x', 42)
+# 42
+dic
+# {'a': '1', 'c': '1', 'd': '1', 'b': '1', 'z': None, 'x': 42}
+
+
 a_dict = {'Name': 'Taras', 'DOB': 20}
 keys = ('Name', "User")
 values = ['Taras', 'tarassito']
 a_dict = dict(zip(keys, values))
 
-a_dict['User'] = 'tarassito' # {'DOB': 20, 'Name': 'Taras', 'User': 'tarassito'}
-print('Name' in a_dict) # True
-print('Name' in a_dict.keys()) # True
-print('Name' in a_dict.values()) # False
-print(('Name','Taras' in a_dict.values())) # False
-a_dict.clear() # {}
+a_dict['User'] = 'tarassito'
+# {'DOB': 20, 'Name': 'Taras', 'User': 'tarassito'}
+print('Name' in a_dict)
+# True
+print('Name' in a_dict.keys())
+# True
+print('Name' in a_dict.values())
+# False
+print(('Name','Taras' in a_dict.values()))
+# False
+a_dict.clear()
+# {}
 
 
-[i for i in a_dict] # ['Name', 'User'] iteration by key
-[i for i in a_dict.items()] # [('Name', 'Taras'), ('User', 'tarassito')] Iteration by key and value
+[i for i in a_dict]
+# ['Name', 'User'] iteration by key
+[i for i in a_dict.items()]
+# [('Name', 'Taras'), ('User', 'tarassito')] Iteration by key and value
 
