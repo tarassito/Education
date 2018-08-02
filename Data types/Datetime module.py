@@ -24,6 +24,9 @@ dt_today = datetime.datetime.today()
 datetime.datetime(2018, 12, 31).isoformat()
 # '2018-12-31T00:00:00'
 
+datetime.datetime(2018, 12, 31).strftime("%d/%m/%y")
+# 31/12/18
+
 datetime.datetime(2018, 12, 31) - datetime.timedelta(days=2, hours=2)
 # datetime.datetime(2018, 12, 28, 22, 0)
 
