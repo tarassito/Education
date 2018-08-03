@@ -1,0 +1,45 @@
+Python:
+1. Data types
+    1. mutable. immutable(hashable, unhashable)
+    2. All data types(built-in)
+    3. All data types(imported from module collections)
+    4. Datetimes!!!!(very important)
+2. OOP!!!! + Abstraction (OOD) (Solid??)
+    Subitems
+    1. OOP(Metaclasses(for abstraction)) + interfaces(загальні відомості, що це таке)
+    2. OOD(Solid)
+    3. Decorators in classes(staticmethod, classmethod, getters etc)
+    4. Metaclasses(for abstraction) better in python 3+(can be singleton pattern as example), type
+3. Magic methods
+    1. Mathematics
+    2. Desigh classes(repr, str)
+    3. Attributes(getattr(as dict), getitem(as list))
+4. Imports
+    1. Relative vs absolute
+    2. all, import
+    3. globals(), locals(), scope of functions
+    4. function properties
+5. Decorators
+6. Functions(functools(partial, wraps))
+7. Multiprocessing(threading, async etc)
+    1. Understand how it works(memory, processes, killing one, what will be with another)
+    2. Write table 1 vs 2 vs 3
+SQL:
+1. CRUD
+2. JOINS
+3. Indexes
+4. Views
+5. Transactions(layers)
+6. http://www.sql-ex.ru/?Lang=0(shared session)
+HTTP:
+1. layers(transports, channel)
+2. CRUD
+3. Codes
+4. Structure(body, header, query)
+5. Simple CRUD on django
+6. REST, SOAP
+7. Web sockets(write simple chat with explanation)(django channels optionally)
+Linux
+1. Main bash commands(create file, search, du(df), vim(main commands), htop)
+2. SSH(public key, private key), SMTP, FTP(how it works...), how it works in git
+3. accesses(users, access to folder, file, executing bash script, etc)
