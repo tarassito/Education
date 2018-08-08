@@ -70,6 +70,8 @@ def squareValidation(v_class):
 
 print(squareValidation(Rectangle)) #True
 print(squareValidation(Square)) #False
+#Як видно з результату перевірки - класс-спадок Square не пройшов валідацію через те, що
+#в ньому були змінені методи setHeight та setWidth, які мають відмінну поведінку від батьківського класу Rectangle
 
 #One of the solutions is to create abstract class Quadrangle and 2 subclasses: Square and Rectangle
 from abc import *
