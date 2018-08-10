@@ -1,11 +1,13 @@
 from abc import ABCMeta, abstractproperty
 
+
 class Item(object):
     __metaclass__ = ABCMeta
 
     @abstractproperty
     def owner(self):
         pass
+
 
 class Axe(Item):
 
@@ -16,10 +18,17 @@ class Axe(Item):
     def owner(self):
         return self.owner_name
 
+# when we need to chagne behavior of our methods we just extends from this class and override that method
     # @property
-    # def owner_data(self):
+    # def owner(self):
     #     return [self.owner_name, 'random_id']
 
+# instead of changing this method we create new class, which extends from this class
+class SomeOtherAxe(Axe):
+
+    @property
+    def owner(self):
+        return self.owner_name + 'X'
 
 class OwnerCollection(object):
 
@@ -27,7 +36,7 @@ class OwnerCollection(object):
         self.items = items
 
     @property
-    def get_list_of_owners(self):
+    def count_items_by_owner(self):
         owners_list = {}
         for item in self.items:
             if item.owner in owners_list:
@@ -36,9 +45,12 @@ class OwnerCollection(object):
                 owners_list[item.owner] = 1
         return owners_list
 
+
+
 a = Axe('Serhyi')
 b = Axe('Kamar')
 c = Axe('Kamar')
+x = SomeOtherAxe('OtherOwner')
 
-result = OwnerCollection((a, b, c))
-print(result.get_list_of_owners)
+result = OwnerCollection((a, b, c, x))
+print(result.count_items_by_owner)
