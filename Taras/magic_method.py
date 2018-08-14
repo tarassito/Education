@@ -119,9 +119,15 @@ print(dir(exp1))
 # __slots__
 class Slotter:
     # обмежує імена атрибутів тими, які вказані в __slots__, тоді не створюється __dict__
+    # навіть якщо ти створиш метод init і спробуєш визначити якісь атрибути для об'єкту, яких немає в slots, то пайтон не дозволить
     # використовується для зменшення кількості використаної пам'яті
 
     __slots__ = ['a', 'b']
+
+    # def __init__(self):
+    #     self.attr = "attribute"
+    # AttributeError: 'Slotter' object has no attribute 'attr'
+
 
 s = Slotter()
 # print(s.__dict__) # AttributeError
