@@ -58,11 +58,13 @@
 
 # import package.package_a  # package without __init__.py
 # print(package.package_a)  # <module 'package.package_a' (namespace)>
+# package.package_a.__path__ # _NamespacePath(['/home/oshto/Education/Ostap/import_examples/package/package_a'])
 # package.package_a.module_a.func_a()  # AttributeError: module 'package.package_a' has no attribute 'module_a'
 # print(dir(package.package_a))  # [ '__name__', '__package__', '__path__', '__spec__']
 
 # import package.package_b  # package with __init__.py that import other modules
-# print(package.package_b)  # <module 'package.package_a' (namespace)>
+# print(package.package_b)  # <module 'package.package_b' from '/home/oshto/Education/Ostap/import_examples/package/package_b/__init__.py'>
+# package.package_b.__path__ # ['/home/oshto/Education/Ostap/import_examples/package/package_b']
 # package.package_b.module_b.func_b()  # func name: func_b from package.package_b.module_b
 # package.package_b.module_c.func_c()  # func name: func_c from package.package_b.module_c
 # print(dir(package.package_b))  # ['__name__', '__package__', '__path__', '__spec__', 'module_b', 'module_c']
@@ -111,5 +113,68 @@
 #            subprocess.__all__ +
 #            tasks.__all__ +
 #            transports.__all__)
+
+# __all__ = []
+
+# decorator for marking which name should be exported when start used.
+# def export(func):
+#     globals()[func.__name__] = func
+#     __all__.append(func.__name__)
+#     return func
+
+# path hacking
+# import asyncio
+# asyncio.__path__
+# asyncio.__path__.append('.')
+# from asyncio.package.package_b import func_c
+# func_c()
+
+# package upgrading
+# xml/__init__.py
+#
+# try:
+#     import _xmlplus
+#     import sys
+#     sys.modules[__name__] = _xmlplus
+# except ImportError:
+#     pass
+
+# Difference between 'python main.py' and 'python -m main'
+# 1) the -m option runs as module and perform relative imports
+# 2) run if exist __main__.py
+# Examples of -m usage
+# python -m http.server
+
+# Module creation and import
+# import types
+# def import_module(modname):
+#     sourcepath = modname + '.py'
+#     with open(sourcepath, 'r') as f:
+#         sourcecode = f.read()
+#     mod = types.ModuleType(modname)
+#     mod.__file__ = sourcepath
+#     code = compile(sourcecode, sourcepath, 'exec')
+#     exec(code, mod.__dict__)
+#     return mod
+#
+# main = import_module('main')
+# print(main)  # <module 'main' from 'main.py'>
+# main.func_x()  # hello world!
+
+# import hook
+# def my_imp(name, *args, imp=__import__):
+#     print('importing', name)
+#     return imp(name, *args)
+#
+# import builtins
+# builtins.__import__ = my_imp
+#
+# import sys  # importing sys
+
+# from importlib.util import find_spec
+# print(find_spec('collections'))
+# ModuleSpec(name='collections', loader=<_frozen_importlib_external.SourceFileLoader object at 0x7f01cbd65198>,
+# origin='/home/oshto/Envs/education/lib/python3.6/collections/__init__.py',
+# submodule_search_locations=['/home/oshto/Envs/education/lib/python3.6/collections'])
 
 

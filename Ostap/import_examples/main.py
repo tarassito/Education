@@ -12,5 +12,7 @@ from package.package_b import module_b
 import package
 
 
-print(f"{list(filter(lambda x: 'package' in x, sys.modules))}")
+# print(f"{list(filter(lambda x: 'package' in x, sys.modules))}")
 
+def func_x():
+    print('hello world!')
