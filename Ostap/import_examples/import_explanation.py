@@ -77,11 +77,39 @@
 # _temp = __import__('package.package_b', globals(), locals(), ['__all__'], 0)
 # print(dir(_temp))  # ['__name__', '__package__', '__path__', '__spec__', 'func_b', 'func_c', 'module_b', 'module_c']
 
+# The import/export controls used in standart lib combine everything
+# for example 'module' collections is not actually a module, actually a package that collects from few different places
+# using __init__.py and __all__
+# import collections # collections/__init__.py that import _collections(builtin) and _collection_abc.py
+# print(__import__('_collections'))  # <module '_collections' (built-in)>
+# print(dir(__import__('_collections')))  # ['OrderedDict', '__doc__', '__name__', '__package__',  'defaultdict', 'deque']
+# print(__import__('_collections_abc'))  # <module '_collections_abc' from '..education/lib/python3.6/_collections_abc.py'>
 
-# print(__import__('_collections'))
-# a = __import__('_collections')
-# print(dir(a))
-
-
+# another example is asyncio
+# import asyncio runs asyncio/__init__.py that contains:
+# This relies on each of the submodules having an __all__ variable.
+# from .base_events import *
+# from .coroutines import *
+# from .events import *
+# from .futures import *
+# from .locks import *
+# from .protocols import *
+# from .queues import *
+# from .streams import *
+# from .subprocess import *
+# from .tasks import *
+# from .transports import *
+#
+# __all__ = (base_events.__all__ +
+#            coroutines.__all__ +
+#            events.__all__ +
+#            futures.__all__ +
+#            locks.__all__ +
+#            protocols.__all__ +
+#            queues.__all__ +
+#            streams.__all__ +
+#            subprocess.__all__ +
+#            tasks.__all__ +
+#            transports.__all__)
 
 
