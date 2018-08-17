@@ -1,6 +1,6 @@
 # Relative explicit import
-from ..package_a import module_d #  two dots means upper level directory
-from . import module_c # one dot means current(of this file) directory
+# from ..package_a import module_d #  two dots means upper level directory
+# from . import module_c # one dot means current(of this file) directory
 
 # Relative implicit import
 # import module_c
@@ -9,3 +9,8 @@ from . import module_c # one dot means current(of this file) directory
 # Implicit relative imports should never be used and have been removed in Python 3.
 # Changed in version 3.3: The import system has been updated to fully implement the second phase of PEP 302.
 # There is no longer any implicit import machinery.
+
+__all__ = ['func_b']
+
+def func_b():
+    print(f"func name: {func_b.__name__} from {__name__}")
