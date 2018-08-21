@@ -26,7 +26,6 @@ def doubler(number):
 
 import datetime
 if __name__ == '__main__':
-    time = datetime.datetime.now()
     numbers = [5, 10, 15, 20, 25]
     procs = []
 
@@ -41,25 +40,6 @@ if __name__ == '__main__':
                                                            # провіряє exitcode процесу. Якщо timeout не є None, а більше 0,
                                                            # то блокує на кількісь секунд в цьому аргументі.
                                                            # Цей метод може викликатись не один раз
-    time_mproc = (datetime.datetime.now()-time).microseconds
-
-    time = datetime.datetime.now()
-    for number in numbers:
-        doubler(number)
-    time_proc = (datetime.datetime.now()-time).microseconds
-    print(f"multiprocessing time = {time_mproc}")
-    print(f"singleprocessing time = {time_proc}")
-    print(f"Difference = {time_mproc-time_proc}")
-# 10 doubled to 20 by Process-2 (id = 229)
-# 15 doubled to 30 by Process-3 (id = 230)
-# 5 doubled to 10 by Process-1 (id = 228)
-# 20 doubled to 40 by Process-4 (id = 231)
-# 25 doubled to 50 by Process-5 (id = 232)
-
-# Для 100 чисел результати часу роботи(В мікросекундах)
-# multiprocessing time = 550 000
-# singleprocessing time = 18 000
-# Difference = 532 000
 
     proc = Process(target=doubler, name="My Process", args=(3,))
     proc.start()
@@ -76,14 +56,14 @@ if __name__ == '__main__':
 # -----fork-----
 # В батьківському процесі використовується os.fork(), щоб розгорнути інтерпретатор Python.
 # Дочірній процес, коли він починається, фактично ідентичний батьківському процесу.
-# Всі ресурси батьків успадковуються від дочірнього процесу. Безпечний fork багатопотокового процесу є проблематичним.
+# Всі ресурси батьків успадковуються дочірньому процесу. Безпечний fork багатопотокового процесу є проблематичним.
 #
 # Доступно лише для Unix. За замовчуванням на Unix.
 #
 # -----forkserver-----
 # Коли програма запускає та вибирає метод запуску forkserver, починається процес сервера.
 # Відтепер, коли потрібен новий процес, батьківський процес підключається до сервера і вимагає, щоб він запускав новий процес.
-# Процесор серверного вилка є однопоточним, тому для нього безпечно використовувати os.fork(). Непотрібні ресурси не успадковуються.
+# Процес forkserver є однопоточним, тому для нього безпечно використовувати os.fork(). Непотрібні ресурси не успадковуються.
 #
 # Доступні на платформах Unix, які підтримують передані файлові дескриптори над Unix pipes.
 # Locks - замки
@@ -122,7 +102,9 @@ if __name__ == '__main__':
     numbers = [5, 10, 20]
     pool = Pool(processes=3)
     print(pool.map(doubler, numbers))
-# Метод map() відображає результат функції кожного процесу
+# map(func, iterable[, chunksize])
+# Метод map() розділяє ітерабельний об'єкт і подає пулу процесів як окремі завдання. Результат повертає
+# в порядку, в якому були подані елементи.
 # [10, 20, 40]
 
 from multiprocessing import Pool
@@ -137,7 +119,8 @@ if __name__ == '__main__':
     result = pool.apply_async(doubler, (25,))
     print(result.get(timeout=1))
 
-# apply_async() - Повертає результуючий об'єкт
+# apply_async(func[, args[, kwds[, callback[, error_callback]]]] - повертає ApplyResult об'єкт
+
 # get(timeout) - повертає результат, коли він надходить. Якщо протягом часу, зазначеного в timeout
 # не надходить результат, то буде викликана TimeoutError
 
