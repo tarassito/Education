@@ -24,6 +24,11 @@ Python:
 7. Multiprocessing(threading, async etc)
     1. Understand how it works(memory, processes, killing one, what will be with another)
     2. Write table 1 vs 2 vs 3
+8. Life of an object(from execution to garbage collector)
+9. Context manager(magic method to work with classes)
+10. Difference btw python2.7 and python3.7(Dima)
+11. Proof from Sergiy that python works similarly at MacOs as at Linux
+12. PyPy, Cython etc
 SQL:
 1. CRUD
 2. JOINS
