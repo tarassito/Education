@@ -29,6 +29,7 @@ Python:
 10. Difference btw python2.7 and python3.7(Dima)
 11. Proof from Sergiy that python works similarly at MacOs as at Linux
 12. PyPy, Cython etc
+13. unicode, utf-8, ascii, bytes 
 SQL:
 1. CRUD
 2. JOINS
@@ -37,6 +38,10 @@ SQL:
 5. Transactions(layers)
 6. http://www.sql-ex.ru/?Lang=0(shared session)
 7. Normalization
+NoSQL:
+1. Mongo
+2. Cassandra
+3. Redis(cache)
 HTTP:
 1. layers(transports, channel)
 2. CRUD
@@ -49,3 +54,4 @@ Linux
 1. Main bash commands(create file, search, du(df), vim(main commands), htop)
 2. SSH(public key, private key), SMTP, FTP(how it works...), how it works in git
 3. accesses(users, access to folder, file, executing bash script, etc)
+Шифрування!!!!!!
