@@ -36,6 +36,7 @@ SQL:
 4. Views
 5. Transactions(layers)
 6. http://www.sql-ex.ru/?Lang=0(shared session)
+7. Normalization
 HTTP:
 1. layers(transports, channel)
 2. CRUD
